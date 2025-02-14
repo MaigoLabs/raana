@@ -48,7 +48,8 @@
     // Randomize the dir and position
     state = 1
     dir = dirs[Math.floor(Math.random() * dirs.length)]
-    pos = Math.random()
+    // Pos between 0.05 and 0.95
+    pos = Math.random() * 0.9 + 0.05
     await divStyles()
   }
 
