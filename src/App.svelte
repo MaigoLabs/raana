@@ -4,12 +4,12 @@
 
   const duration = 0.3
 
-  // Pos: % from 0 to 1 on the axis perpendicular to the direction
+  // Pos: % from 0 to 1 on the axis perpendicular to the dir
   let pos = 0.5
 
   // top | bottom | left | right
-  const directions = ["top", "bottom", "left", "right"]
-  let direction = "bottom"
+  const dirs = ["top", "bottom", "left", "right"]
+  let dir = "bottom"
   
   // 0: idle, 1: entering, 2: leaving
   let state = 0
@@ -19,9 +19,9 @@
   let imgEl: HTMLImageElement
 
   function getInitTrans() {
-    const dirC = direction === 'top' || direction === 'bottom' ? 'Y' : 'X'
-    const dirN = direction === 'top' || direction === 'left' ? '-' : ''
-    const dirV = direction === 'top' || direction === 'bottom' ? '300px' : '200px'
+    const dirC = dir === 'top' || dir === 'bottom' ? 'Y' : 'X'
+    const dirN = dir === 'top' || dir === 'left' ? '-' : ''
+    const dirV = dir === 'top' || dir === 'bottom' ? '300px' : '200px'
     return `translate${dirC}(${dirN}${dirV})`
   }
 
@@ -45,10 +45,10 @@
     divEl.style.transform = getInitTrans()
     await sleep(duration)
 
-    // Randomize the direction
+    // Randomize the dir and position
     state = 1
-    direction = directions[Math.floor(Math.random() * directions.length)]
-    console.log("New direction:", direction)
+    dir = dirs[Math.floor(Math.random() * dirs.length)]
+    pos = Math.random()
     await divStyles()
   }
 
@@ -58,11 +58,8 @@
     let obj: any = {}
  
     obj.transform = getInitTrans()
-    obj[direction] = '-50px'
-    for (let dir of directions) {
-      if (dir !== direction) obj[dir] = 'unset'
-    }
-    let perpendicular = direction === 'bottom' || direction === 'top' ? 'left' : 'top'
+    obj[dir] = '-50px'
+    let perpendicular = dir === 'bottom' || dir === 'top' ? 'left' : 'top'
     obj[perpendicular] = `calc(${pos * 100}% - 100px)`
     
     divEl.style.transition = `none`
@@ -79,12 +76,12 @@
 
     let obj: any = {}
     
-    obj['rotate'] = direction === 'top' ? '180deg' 
-      : direction === 'left' ? '30deg'
-      : direction === 'right' ? '-30deg'
+    obj['rotate'] = dir === 'top' ? '180deg' 
+      : dir === 'left' ? '30deg'
+      : dir === 'right' ? '-30deg'
       : '0deg'
 
-    if (direction === 'right') {
+    if (dir === 'right') {
       obj['transform'] = 'scaleX(-1)'
     }
 
