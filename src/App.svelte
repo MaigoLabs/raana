@@ -62,6 +62,7 @@
     let perpendicular = dir === 'bottom' || dir === 'top' ? 'left' : 'top'
     obj[perpendicular] = `calc(${pos * 100}% - 100px)`
     
+    // Disable transition for the initial position
     divEl.style.transition = `none`
     divEl.style.cssText = Object.keys(obj).map(key => `${key}: ${obj[key]}`).join('; ')
     await sleep(0.1)
@@ -88,9 +89,8 @@
     imgEl.style.cssText = Object.keys(obj).map(key => `${key}: ${obj[key]}`).join('; ')
   }
 
-  onMount(() => {
-    setTimeout(() => divStyles(), 100)
-  })
+  onMount(() => setTimeout(divStyles, 100)
+)
 </script>
 
 <main>
