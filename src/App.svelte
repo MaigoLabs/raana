@@ -126,7 +126,8 @@
     <div class="sub">
       <span>Maigo Labs</span>
       <div class="flex-1"></div>
-      <a href="https://github.com/MaigoLabs"><Icon icon="fa6-brands:github"/></a>
+      <a href="https://github.com/MaigoLabs"><Icon icon="line-md:github-twotone"/></a>
+      <a href="mailto:raana@maigo.dev"><Icon icon="line-md:email-alt-twotone"/></a>
     </div>
     <div class="quote">
       <div>{quotes[quoteIdx][0]}</div>
@@ -187,10 +188,12 @@
       align-items: center
       font-size: 1.5rem
       width: 100%
+      gap: 5px
 
       a
         display: flex
         align-items: center
+        font-size: 2rem
 
     .quote
       font-size: 1.2rem
