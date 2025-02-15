@@ -16,6 +16,7 @@
   let state = 0
 
   // Reference to the image element
+  let mainEl: HTMLElement
   let divEl: HTMLDivElement
   let imgEl: HTMLImageElement
 
@@ -92,11 +93,23 @@
     imgEl.style.cssText = Object.keys(obj).map(key => `${key}: ${obj[key]}`).join('; ')
   }
 
-  onMount(() => setTimeout(divStyles, 100)
-)
+  onMount(() => setTimeout(divStyles, 100))
+
+  // This function creates a heart at the click position.
+  function createHeart(event: MouseEvent) {
+    console.log("Creating heart")
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    // Position the heart at the cursor's location.
+    heart.style.left = `${event.clientX + Math.random() * 20 - 10}px`;
+    heart.style.top = `${event.clientY + Math.random() * 20 - 10}px`;
+    mainEl.appendChild(heart);
+    // Remove the heart element after the animation duration (e.g., 2s)
+    setTimeout(() => heart.remove(), 2000);
+  }
 </script>
 
-<main>
+<main bind:this={mainEl}>
   <div class="info">
     <h1>半熟迷子工作室</h1>
     <div>
@@ -106,7 +119,8 @@
     </div>
   </div>
   <div class="img" bind:this={divEl}>
-    <img bind:this={imgEl} src={rana} alt="rana" on:mouseenter={onHover}/>
+    <img bind:this={imgEl} src={rana} alt="rana" on:mouseenter={onHover}
+      on:click={createHeart} role="none" />
   </div>
 </main>
 
