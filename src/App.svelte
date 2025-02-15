@@ -133,7 +133,8 @@
     max-height: 100%
     overflow: hidden
 
-    background: #f0f0f0
+    // background: #f0f0f0
+    background: #f9f2e0
     display: flex
     justify-content: center
     align-items: center
@@ -149,10 +150,12 @@
     h1
       font-size: 3rem
       color: transparent
-      background-color: rgb(136 130 130 / 70%)
+      // background-color: rgb(136 130 130 / 70%)
+      background-color: rgb(199 168 148 / 57%)
       -webkit-background-clip: text
       background-clip: text
-      text-shadow: rgba(255, 255, 255, .7) 0 3px 6px
+      // text-shadow: rgba(255, 255, 255, .7) 0 3px 6px
+      text-shadow: rgba(255, 255, 255, .5) 0 3px 6px
       margin-bottom: 0
 
       overflow: hidden
@@ -162,7 +165,8 @@
       display: flex
       align-items: center
       font-size: 1.5rem
-      color: rgb(136 130 130 / 70%)
+      // color: rgb(136 130 130 / 70%)
+      color: rgb(222 203 185)
 
       a
         display: flex
