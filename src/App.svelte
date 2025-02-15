@@ -63,6 +63,7 @@
     obj[dir] = '-50px'
     let perpendicular = dir === 'bottom' || dir === 'top' ? 'left' : 'top'
     obj[perpendicular] = `calc(${pos * 100}% - 100px)`
+    obj.display = 'block'
     
     // Disable transition for the initial position
     divEl.style.transition = `none`
@@ -125,6 +126,7 @@
 
   .img
     position: absolute
+    display: none
     
     img 
       width: 200px
