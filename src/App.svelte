@@ -178,7 +178,7 @@
       background-clip: text
       // text-shadow: rgba(255, 255, 255, .7) 0 3px 6px
       text-shadow: rgba(255, 255, 255, .5) 0 3px 6px
-      margin-bottom: 0
+      margin: 0
 
       overflow: hidden
       white-space: nowrap
