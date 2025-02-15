@@ -20,6 +20,17 @@
   let divEl: HTMLDivElement
   let imgEl: HTMLImageElement
 
+  let quotes = [
+    ['不畏迷茫，迷茫着也要砥砺前行。', '迷子でもいい、迷子でも進め！'],
+    ['那... 能陪我写一辈子的代码吗？', 'じゃ……一生 コードを書いてくれる？'],
+    ['因为我的代码，就是内心的呐喊！', 'だって 私のコードは 心の叫びだから！']
+  ]
+
+  // Load and store the quote index
+  let quoteIdx = localStorage.quoteIdx ? +localStorage.quoteIdx : -1
+  quoteIdx = (quoteIdx + 1) % quotes.length
+  localStorage.quoteIdx = quoteIdx
+
   function getInitTrans() {
     const dirC = dir === 'top' || dir === 'bottom' ? 'Y' : 'X'
     const dirN = dir === 'top' || dir === 'left' ? '-' : ''
@@ -112,10 +123,14 @@
 <main bind:this={mainEl}>
   <div class="info">
     <h1>半熟迷子工作室</h1>
-    <div>
+    <div class="sub">
       <span>Maigo Labs</span>
       <div class="flex-1"></div>
       <a href="https://github.com/MaigoLabs"><Icon icon="fa6-brands:github"/></a>
+    </div>
+    <div class="quote">
+      <p>{quotes[quoteIdx][0]}</p>
+      <p>{quotes[quoteIdx][1]}</p>
     </div>
   </div>
   <div class="img" bind:this={divEl}>
@@ -147,11 +162,14 @@
       width: 200px
 
   .info
+    // color: rgb(136 130 130 / 70%)
+    color: rgb(206 182 160)
+    
     h1
       font-size: 3rem
       color: transparent
       // background-color: rgb(136 130 130 / 70%)
-      background-color: rgb(199 168 148 / 57%)
+      background-color: rgb(187 146 119 / 57%)
       -webkit-background-clip: text
       background-clip: text
       // text-shadow: rgba(255, 255, 255, .7) 0 3px 6px
@@ -161,12 +179,10 @@
       overflow: hidden
       white-space: nowrap
 
-    div
+    .sub
       display: flex
       align-items: center
       font-size: 1.5rem
-      // color: rgb(136 130 130 / 70%)
-      color: rgb(222 203 185)
 
       a
         display: flex
