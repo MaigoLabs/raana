@@ -120,7 +120,7 @@
   </div>
   <div class="img" bind:this={divEl}>
     <img bind:this={imgEl} src={rana} alt="rana" on:mouseenter={onHover}
-      on:click={createHeart} role="none" />
+      on:click={createHeart} role="none" on:touchstart={onHover} />
   </div>
 </main>
 
