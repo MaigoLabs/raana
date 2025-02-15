@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import rana from "./rana.png"
+  import Icon from "@iconify/svelte";
 
   const duration = 0.3
 
@@ -95,6 +96,14 @@
 </script>
 
 <main>
+  <div class="info">
+    <h1>半熟迷子工作室</h1>
+    <div>
+      <span>Maigo Labs</span>
+      <div class="flex-1"></div>
+      <a href="https://github.com/MaigoLabs"><Icon icon="fa6-brands:github"/></a>
+    </div>
+  </div>
   <div class="img" bind:this={divEl}>
     <img bind:this={imgEl} src={rana} alt="rana" on:mouseenter={onHover}/>
   </div>
@@ -109,9 +118,49 @@
     max-height: 100%
     overflow: hidden
 
+    background: #f0f0f0
+    display: flex
+    justify-content: center
+    align-items: center
+
   .img
     position: absolute
     
     img 
       width: 200px
+
+  .info
+    h1
+      font-size: 3rem
+      color: transparent
+      background-color: rgb(136 130 130 / 70%)
+      -webkit-background-clip: text
+      background-clip: text
+      text-shadow: rgba(255, 255, 255, .7) 0 3px 6px
+      margin-bottom: 0
+
+      overflow: hidden
+      white-space: nowrap
+
+    div
+      display: flex
+      align-items: center
+      font-size: 1.5rem
+      color: rgb(136 130 130 / 70%)
+
+      a
+        display: flex
+        align-items: center
+  
+  @media screen and (max-width: 400px)
+    .info
+      h1
+        font-size: 2rem
+
+      div
+        font-size: 1.2rem
+
+    .img
+      img
+        width: 150px
 </style>
