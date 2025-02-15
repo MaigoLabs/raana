@@ -129,8 +129,8 @@
       <a href="https://github.com/MaigoLabs"><Icon icon="fa6-brands:github"/></a>
     </div>
     <div class="quote">
-      <p>{quotes[quoteIdx][0]}</p>
-      <p>{quotes[quoteIdx][1]}</p>
+      <div>{quotes[quoteIdx][0]}</div>
+      <div>{quotes[quoteIdx][1]}</div>
     </div>
   </div>
   <div class="img" bind:this={divEl}>
@@ -164,12 +164,15 @@
   .info
     // color: rgb(136 130 130 / 70%)
     color: rgb(206 182 160)
+    display: flex
+    flex-direction: column
+    align-items: center
     
     h1
       font-size: 3rem
       color: transparent
       // background-color: rgb(136 130 130 / 70%)
-      background-color: rgb(187 146 119 / 57%)
+      background-color: rgb(183 133 101 / 57%)
       -webkit-background-clip: text
       background-clip: text
       // text-shadow: rgba(255, 255, 255, .7) 0 3px 6px
@@ -183,10 +186,33 @@
       display: flex
       align-items: center
       font-size: 1.5rem
+      width: 100%
 
       a
         display: flex
         align-items: center
+
+    .quote
+      font-size: 1.2rem
+      position: relative
+      margin-top: 1rem
+      opacity: 0.7
+      width: max-content
+
+      &::before, &::after
+        font-size: 2rem
+        margin-right: 0.2rem
+        position: absolute       
+
+      &::before
+        content: '「'
+        top: -0.5rem
+        left: -2.5rem
+
+      &::after
+        content: '」'
+        bottom: -0.5rem
+        right: -2.5rem
   
   @media screen and (max-width: 400px)
     .info
